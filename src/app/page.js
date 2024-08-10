@@ -1,113 +1,64 @@
-import Image from "next/image";
+'use client'
+
+import {TypeAnimation} from "react-type-animation";
+import {useState} from "react";
+import {MacOnTopWindow, PhotosOnTopWindow} from "@/app/components/window";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    const [typingStatus, setTypingStatus] = useState(false);
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+    return (
+    <main className="bg-background h-screen">
+        <PhotosOnTopWindow/>
+        <nav className="flex justify-end w-full p-4">
+            <div className="flex gap-8 indent-[1px] text-gray-50">
+                <a><span className="text-yellow-200">[1]</span> About</a>
+                <a><span className="text-yellow-200">[2]</span> My Work</a>
+                <a><span className="text-yellow-200">[3]</span> Tools</a>
+                <a><span className="text-yellow-200">[4]</span> Contact Me</a>
+            </div>
+        </nav>
+        <section className="w-full flex justify-center py-32">
+          <div className="lg:w-[50%] w-full p-2">
+              <div className="coding inverse-toggle h-[450px] px-5 pt-4 shadow-lg text-gray-100 text-sm font-mono subpixel-antialiased
+              bg-gray-800 pb-6 pt-4 rounded-lg leading-normal overflow-hidden">
+                  <div className="top mb-2 flex">
+                      <div className="h-3 w-3 bg-red-500 rounded-full"></div>
+                      <div className="ml-2 h-3 w-3 bg-orange-300 rounded-full"></div>
+                      <div className="ml-2 h-3 w-3 bg-green-500 rounded-full"></div>
+                  </div>
+                  <div className="mt-4 flex flex-col">
+                      <pre>█▀▄▀█ ▄▀█ █ █▄▀ █▄█ █▀▄ █▀▀ █ █<br/>
+                          █ ▀ █ █▀█ █ █ █  █  █▄▀ ██▄ ▀▄▀</pre>
+                      <div className="flex">
+                          <span className="text-green-400 pointer-events-none select-none">maiky-vm:~$</span>
+                          <p className="typing items-center pl-2">
+                              <TypeAnimation sequence={[1000, "cat maiky.conf", () => setTypingStatus(true)]}/>
+                          </p>
+                      </div>
+                      {typingStatus ?
+                        <div>
+                            <p>My name is MaikyDev and here are some of my qualities</p>
+                            <div className="pl-3 flex flex-col">
+                                <a><span className="text-yellow-300">[1]</span> I am a software developer, mainly I do backend and frontend (Click me for my work)</a>
+                                <a><span className="text-yellow-300">[2]</span> I have experience in <span className="text-orange-300">Java</span>, <span className="text-blue-400">C++</span>, <span className="text-yellow-300">JavaScript</span>, HTML, CSS and PHP</a>
+                                <a><span className="text-yellow-300">[3]</span> As a webdeveloper I used only those frameworks React, NextJS, Express and Laravel</a>
+                                <a><span className="text-yellow-300">[4]</span> Also I am a minecraft developer with some plugins to my name! (See my SpigotMC)</a>
+                            </div>
+                            <p>About me:</p>
+                            <p>I am 18, from <span className="underline decoration-rose-700">Romania</span> and currently pursuing a degree in Computer Science at <span className="underline decoration-yellow-400">Politehnica</span> University of Bucharest. I began my studies in 2024.</p>
+                            <div className="pl-3 flex flex-col">
+                                <a><span className="text-yellow-300">[2019]</span> In 2019, I started liking programing, exactly Java, working with SpigotAPI to create minecraft plugins!</a>
+                                <a><span className="text-yellow-300">[2022]</span> Started discovering and learning about networking and Linux systems.</a>
+                                <a><span className="text-yellow-300">[2023]</span> Web Development: Began developing both frontend and backend for websites</a>
+                                <a><span className="text-yellow-300">[2024]</span> My first company, FlareHosting</a>
+                            </div>
+                        </div> : <p></p>
+                      }
+                  </div>
+              </div>
+          </div>
+      </section>
     </main>
   );
 }

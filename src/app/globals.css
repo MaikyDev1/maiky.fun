@@ -1,33 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.text-gradient {
+  background: linear-gradient(
+          to right,
+          #7F00FF 20%,
+          #FF416C 30%,
+          #FF4B2B 70%,
+          #E100FF 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  background-size: 500% auto;
+  animation: textShine 5s ease-in-out infinite alternate;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
   }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+* {
+  font-family: "Roboto Mono", monospace;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  padding: 0;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.title-font {
+  font-family: "Geologica", sans-serif;
+  font-weight: 700;
+}
+
+::-webkit-scrollbar{
+  width: 3px;
+}
+
+::-webkit-scrollbar-track-piece{
+  background-color: #120523;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: #6c329e;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color: #3a195b;
 }

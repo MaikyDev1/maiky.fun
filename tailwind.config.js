@@ -7,6 +7,17 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'montserrat': ['Montserrat'],
+        'lato': ['Lato'],
+        'garamond': ['Garamond']
+      },
+      colors: {
+        background: "#120d19",
+        primary: "#b198d4",
+        secondary: "#512b84",
+        accent: "#7534cd"
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
