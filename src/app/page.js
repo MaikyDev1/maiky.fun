@@ -1,21 +1,39 @@
 'use client'
 
+import { useSearchParams } from 'next/navigation'
 import {TypeAnimation} from "react-type-animation";
 import {useState} from "react";
-import {MacOnTopWindow, PhotosOnTopWindow} from "@/app/components/window";
+import {PhotosOnTopWindow} from "@/app/components/windows/finder";
+import {ContactOnTopWindow} from "@/app/components/windows/contact";
+import {ToolsOnTopWindow} from "@/app/components/windows/launchpad";
+import {AboutOnTopWindow} from "@/app/components/windows/about";
+
+function RenderOnTopWindow({window, setWindow}) {
+    switch (window) {
+        case "about":
+            return <AboutOnTopWindow setWindow={setWindow}/>
+        case "work":
+            return <PhotosOnTopWindow setWindow={setWindow}/>
+        case "contact":
+            return <ContactOnTopWindow setWindow={setWindow}/>
+        case "tools":
+            return <ToolsOnTopWindow setWindow={setWindow}/>
+    }
+}
 
 export default function Home() {
+    const searchParams = useSearchParams()
     const [typingStatus, setTypingStatus] = useState(false);
-
+    const [window, setWindow] = useState(searchParams.has('window') ? searchParams.get("window") : null);
     return (
     <main className="bg-background h-screen">
-        <PhotosOnTopWindow/>
+        <RenderOnTopWindow window={window} setWindow={setWindow}/>
         <nav className="flex justify-end w-full p-4">
-            <div className="flex gap-8 indent-[1px] text-gray-50">
-                <a><span className="text-yellow-200">[1]</span> About</a>
-                <a><span className="text-yellow-200">[2]</span> My Work</a>
-                <a><span className="text-yellow-200">[3]</span> Tools</a>
-                <a><span className="text-yellow-200">[4]</span> Contact Me</a>
+            <div className="flex md:justify-end md:gap-8 text-sm w-full justify-between indent-[1px] text-gray-50">
+                <a className="cursor-pointer hover:underline" onClick={() => setWindow("about")}><span className="text-yellow-200">[1]</span> About</a>
+                <a className="cursor-pointer hover:underline" onClick={() => setWindow("work")}><span className="text-yellow-200">[2]</span> My Work</a>
+                <a className="cursor-pointer hover:underline" onClick={() => setWindow("tools")}><span className="text-yellow-200">[3]</span> Tools</a>
+                <a className="cursor-pointer hover:underline" onClick={() => setWindow("contact")}><span className="text-yellow-200">[4]</span> Contact Me</a>
             </div>
         </nav>
         <section className="w-full flex justify-center py-32">
@@ -33,7 +51,7 @@ export default function Home() {
                       <div className="flex">
                           <span className="text-green-400 pointer-events-none select-none">maiky-vm:~$</span>
                           <p className="typing items-center pl-2">
-                              <TypeAnimation sequence={[1000, "cat maiky.conf", () => setTypingStatus(true)]}/>
+                              <TypeAnimation cursor={false} sequence={[1000, "cat maiky.conf", () => setTypingStatus(true)]}/>
                           </p>
                       </div>
                       {typingStatus ?
